@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('partials/head') %>
+
+<body>
+
+<%- include('partials/header') %>
+
+<main>
+  <figure>
+    <img src="/images/lrg/<%= photo.fileName %>" alt="<%= photo.title %>">
+    <figcaption>"<%= photo.title %>" photographer - <a href="<%= photo.attribution.url %>"><%= photo.attribution.credit %></a> source site: <%= photo.attribution.source %></figcaption>
+  </figure>
+</main>
+
+<%- include('partials/footer') %>
+
+</body>
+</html>
