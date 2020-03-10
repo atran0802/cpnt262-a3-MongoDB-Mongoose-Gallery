@@ -2,11 +2,8 @@ const mongoose = require('mongoose');
 
 const imageSchema = new mongoose.Schema(
   {
-    term: {
-      type: String,
-      required: true
-    },
-    definition: String,
+    term: String,
+    image: String,
     slug: String
   }
 );
