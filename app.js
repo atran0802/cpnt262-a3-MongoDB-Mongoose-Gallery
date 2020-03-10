@@ -5,6 +5,7 @@ const dotenv = require('dotenv').config();
 const ejs = require('ejs');
 const pageTitle = require('./pageTitle');
 const gallery = require('./gallery');
+const image = require('/image');
 
 /* Runs express */
 const app = express();
@@ -56,6 +57,9 @@ app.get('/gallery/:id',function(req, res) {
       res.render('galleryId',{title: req.params.id})
   }}
 });
+
+app.get('/image',async function(req, res) {
+  res.locals.currentImage = 'current';
 
 /* Returns 404 error */
 app.use(function(req, res, next) {
