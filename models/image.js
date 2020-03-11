@@ -2,10 +2,15 @@ const mongoose = require('mongoose');
 
 const imageSchema = new mongoose.Schema(
   {
-    term: String,
-    image: String,
-    slug: String
-  }
+    id: Number,
+    title: String,
+    source: String,
+    fileName: String,
+    attribution:  {
+      source: String,
+      credit: String,
+      url:  String
+  }}
 );
 
 module.exports = mongoose.model('Image', imageSchema);
