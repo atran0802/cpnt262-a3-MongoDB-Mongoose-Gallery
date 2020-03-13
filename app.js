@@ -5,18 +5,19 @@ const dotenv = require('dotenv').config();
 const ejs = require('ejs');
 const pageTitle = require('./pageTitle');
 const gallery = require('./gallery');
-const image = require('/image');
+const Image = require('./models/Images.js');
+const slugify = require('slugify');
 
-/* Runs express */
+/* App Setup */
 const app = express();
-
-/* Runs ejs */
 app.set('view engine', 'ejs');
 
 app.locals.gallery = gallery;
 
 /* Serving static files in express */
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.json());
 
 /* Mongoose/MongoDB Connection */
 const dbURI = process.env.MONGODB_URL;
@@ -60,6 +61,25 @@ app.get('/gallery/:id',function(req, res) {
 
 app.get('/image',async function(req, res) {
   res.locals.currentImage = 'current';
+
+/* GET /images */
+app.get('/', function(request, response){
+
+  model.find(function(error, result) { 
+    response.json(result);
+  });
+});  
+
+/* GET /images/:id */
+app.get('/:slug', function(request,response){
+
+  model.findOne({slug: request.params.slug},function(error, result) { 
+    if(error){
+      return console.log(error);
+    }
+    response.json(result);
+  });
+});
 
 /* Returns 404 error */
 app.use(function(req, res, next) {
