@@ -48,22 +48,19 @@ app.get('/gallery',function(req, res) {
   res.render('gallery',pageTitle.gallery);
 });
 
-app.get('/gallery',function(req, res) {  
-  res.render('gallery',{gallery});
-});
+// app.get('/gallery',function(req, res) {  
+//   res.render('gallery',{gallery});
+// });
 
-app.get('/gallery/:id',function(req, res) {
-  for (photo of gallery){
-    if (photo.id == req.params.id){
-      res.render('galleryId',{title: req.params.id})
-  }}
-});
-
-app.get('/image',async function(req, res) {
-  res.locals.currentImage = 'current';
+// app.get('/gallery/:id',function(req, res) {
+//   for (photo of gallery){
+//     if (photo.id == req.params.id){
+//       res.render('galleryId',{title: req.params.id})
+//   }}
+// });
 
 /* GET /images */
-app.get('/', function(request, response){
+app.get('/images', function(request, response){
 
   model.find(function(error, result) { 
     response.json(result);
@@ -71,9 +68,9 @@ app.get('/', function(request, response){
 });  
 
 /* GET /images/:id */
-app.get('/:slug', function(request,response){
+app.get('/images/:id', function(request,response){
 
-  model.findOne({slug: request.params.slug},function(error, result) { 
+  model.findOne({id: request.params.id},function(error, result) { 
     if(error){
       return console.log(error);
     }
