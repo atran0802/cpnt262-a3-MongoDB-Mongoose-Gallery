@@ -4,7 +4,7 @@
   "engines": {
     "node": "^12.16.1"
   },
-  "description": "",
+  "description": "https://wbdv-a3-mongodbmongoosegallery.herokuapp.com/",
   "main": "index.js",
   "scripts": {
     "start": "node app.js"
@@ -22,8 +22,11 @@
   "homepage": "https://github.com/atran0802/cpnt262-a3-MongoDB-Mongoose-Gallery#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
+    "ejs": "^3.0.1",
     "express": "^4.17.1",
     "mongoose": "^5.9.4",
-    "node": "^13.10.1"
+    "node": "^13.10.1",
+    "slug": "^2.1.1",
+    "slugify": "^1.4.0"
   }
 }
