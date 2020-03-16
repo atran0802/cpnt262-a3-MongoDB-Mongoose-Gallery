@@ -62,19 +62,19 @@ app.get('/gallery',function(req, res) {
 /* GET /images */
 app.get('/images', function(request, response){
 
-  model.find(function(error, result) { 
-    response.json(result);
+  Image.find(function(error, result) { 
+    response.render('gallery', {gallery: result});
   });
 });  
 
 /* GET /images/:id */
 app.get('/images/:id', function(request,response){
 
-  model.findOne({id: request.params.id},function(error, result) { 
+  Image.findOne({id: request.params.id},function(error, result) { 
     if(error){
       return console.log(error);
     }
-    response.json(result);
+    response.render('galleryId', result);
   });
 });
 
